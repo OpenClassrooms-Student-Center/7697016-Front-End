@@ -84,3 +84,26 @@ boutonNodesc.addEventListener("click", function () {
 	});
 	console.log(piecesFiltrees);
 });
+
+// Récupération du nom des pièces
+const noms = pieces.map(piece => piece.nom);
+
+// Boucle for de la fin vers le début
+for (let i = pieces.length - 1; i >= 0; i--) {
+	if (pieces[i].prix > 35) {
+		noms.splice(i, 1);
+	}
+}
+
+// Création de l'élément ul
+const abordablesElement = document.createElement("ul");
+
+// Création et rattachement des éléments li
+for (let i = 0; i < noms.length; i++) {
+	const nomElement = document.createElement("li");
+	nomElement.innerText = noms[i];
+	abordablesElement.appendChild(nomElement);
+}
+
+// Rattachement de toute la liste à la page
+document.querySelector(".abordables").appendChild(abordablesElement);
