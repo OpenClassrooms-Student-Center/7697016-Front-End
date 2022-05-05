@@ -55,3 +55,12 @@ boutonTrier.addEventListener("click", function () {
 	});
 	console.log(piecesReordonnees);
 });
+
+// Ajout du listener pour filter les pièces non abordables
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+boutonFiltrer.addEventListener("click", function () {
+	const piecesFiltrees = pieces.filter(function (piece) {
+		return piece.prix <= 35;
+	});
+	console.log(piecesFiltrees);
+});
