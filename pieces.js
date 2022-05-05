@@ -45,3 +45,13 @@ for (let i = 0; i < pieces.length; i++) {
 	// On rattache la balise article à la section fiches
 	sectionFiches.appendChild(pieceElement);
 }
+
+// Ajout du listener pour trier les pièces par ordre de prix croissant
+const boutonTrier = document.querySelector(".btn-trier");
+boutonTrier.addEventListener("click", function () {
+	const piecesReordonnees = Array.from(pieces);
+	piecesReordonnees.sort(function (a, b) {
+		return a.prix - b.prix;
+	});
+	console.log(piecesReordonnees);
+});
