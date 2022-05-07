@@ -45,6 +45,12 @@ function genererPieces(pieces) {
 		disponibiliteElement.innerText = pieces[i].disponibilite ? "En stock" : "Rupture de stock";
 		pieceElement.appendChild(disponibiliteElement);
 
+		// Bouton pour afficher les avis
+		const avisElement = document.createElement("button");
+		avisElement.innerText = "Afficher les avis";
+		avisElement.dataset.id = pieces[i].id; // Attribut data-id="XX"
+		pieceElement.appendChild(avisElement);
+
 		// On rattache la balise article à la section fiches
 		sectionFiches.appendChild(pieceElement);
 	}
