@@ -122,6 +122,12 @@ boutonNodesc.addEventListener("click", function () {
 	genererPieces(piecesFiltrees);
 });
 
+// Ajout du listener pour mettre à jour des données du localStorage
+const boutonMettreAJour = document.querySelector(".btn-maj");
+boutonMettreAJour.addEventListener("click", function () {
+	window.localStorage.removeItem("pieces");
+});
+
 // Récupération du nom des pièces
 const noms = pieces.map(piece => piece.nom);
 
