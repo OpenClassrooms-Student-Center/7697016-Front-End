@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "http-server"
+    "dev": "http-server",
+    "lint": "eslint *.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chart.js": "^3.7.1",
     "http-server": "^14.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0"
   }
 }

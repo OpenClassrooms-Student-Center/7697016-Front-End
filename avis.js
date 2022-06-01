@@ -1,3 +1,5 @@
+/* global Chart */
+
 // Fonction qui enregistre des event listener sur les boutons de la page.
 // Elle sera appelée après chaque génération ou mise à jour de la page
 // car pour la mettre à jour, on supprime l'intégralité des éléments DOM avec innerHTML = "".
@@ -28,7 +30,7 @@ export function afficherAvis(pieceElement, avis) {
 	const avisElement = document.createElement("p");
 
 	for (let i = 0; i < avis.length; i++) {
-		avisElement.innerHTML += avis[i].utilisateur + ': ' + avis[i].commentaire + '<br>';
+		avisElement.innerHTML += avis[i].utilisateur + ": " + avis[i].commentaire + "<br>";
 	}
 
 	pieceElement.appendChild(avisElement);
@@ -89,7 +91,7 @@ const config = {
 };
 
 // Rendu du graphique dans l'élément canvas
-const graphiqueAvis = new Chart(
+new Chart(
 	document.querySelector("#graphique-avis"),
 	config,
 );
