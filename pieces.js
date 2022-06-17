@@ -1,4 +1,4 @@
-import { ajoutListenersAvis } from "./avis.js";
+import { ajoutListenersAvis, afficherAvis } from "./avis.js";
 
 // Récupération des pièces éventuellement stockées dans le localStorage
 let pieces = window.localStorage.getItem("pieces");
@@ -25,6 +25,7 @@ function genererPieces(pieces) {
 
 		// Création d’une balise dédiée à une pièce automobile
 		const pieceElement = document.createElement("article");
+		pieceElement.dataset.id = pieces[i].id;
 
 		// On crée l’élément img.
 		const imageElement = document.createElement("img");
@@ -74,6 +75,18 @@ function genererPieces(pieces) {
 
 // Premier affichage de la page
 genererPieces(pieces);
+
+// Affichage des avis s'ils sont présents dans le localStorage
+for (let i = 0; i < pieces.length; i++) {
+	const id = pieces[i].id;
+	const avisJSON = window.localStorage.getItem("avis-piece-" + id);
+	const avis = JSON.parse(avisJSON);
+
+	if (avis !== null) {
+		const pieceElement = document.querySelector(`[data-id="${id}"`);
+		afficherAvis(pieceElement, avis);
+	}
+}
 
 // Ajout du listener pour trier les pièces par ordre de prix croissant
 const boutonTrier = document.querySelector(".btn-trier");

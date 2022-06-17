@@ -13,19 +13,25 @@ export function ajoutListenersAvis() {
 			const reponse = await fetch("http://localhost:8081/pieces/" + id + "/avis");
 			// Reconstruction des données en mémoire depuis la réponse au format JSON.
 			const avis = await reponse.json();
+			// Sauvegarde des avis dans le localStorage
+			window.localStorage.setItem("avis-piece-" + id, JSON.stringify(avis));
 
 			// Récupération de la balise article pour la pièce désirée.
 			const pieceElement = event.target.parentElement;
-			// Création d'une balise p pour regrouper tous les avis.
-			const avisElement = document.createElement("p");
-
-			for (let i = 0; i < avis.length; i++) {
-				avisElement.innerHTML += avis[i].utilisateur + ': ' + avis[i].commentaire + '<br>';
-			}
-
-			pieceElement.appendChild(avisElement);
+			afficherAvis(pieceElement, avis);
 		});
 	}
+}
+
+export function afficherAvis(pieceElement, avis) {
+	// Création d'une balise p pour regrouper tous les avis.
+	const avisElement = document.createElement("p");
+
+	for (let i = 0; i < avis.length; i++) {
+		avisElement.innerHTML += avis[i].utilisateur + ': ' + avis[i].commentaire + '<br>';
+	}
+
+	pieceElement.appendChild(avisElement);
 }
 
 const formulaireAvis = document.querySelector(".formulaire-avis");
