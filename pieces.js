@@ -64,3 +64,23 @@ boutonFiltrer.addEventListener("click", function () {
 	});
 	console.log(piecesFiltrees);
 });
+
+// Ajout du listener pour trier les pièces par ordre de prix décroissant
+const boutonDecroissant = document.querySelector(".btn-decroissant");
+boutonDecroissant.addEventListener("click", function () {
+	const piecesReordonnees = Array.from(pieces);
+	piecesReordonnees.sort(function (a, b) {
+		// B - A (et pas A - B)
+		return b.prix - a.prix;
+	});
+	console.log(piecesReordonnees);
+});
+
+// Ajout du listener pour filter les pièces sans description
+const boutonNodesc = document.querySelector(".btn-nodesc");
+boutonNodesc.addEventListener("click", function () {
+	const piecesFiltrees = pieces.filter(function (piece) {
+		return Boolean(piece.description);
+	});
+	console.log(piecesFiltrees);
+});
