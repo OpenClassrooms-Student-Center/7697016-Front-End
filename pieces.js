@@ -20,6 +20,12 @@ prixElement.innerText = "Prix : " + ampoule.prix + " €"
 const categorieElement = document.createElement("p");
 categorieElement.innerText = ampoule.categorie ?? "(aucune catégorie)";
 
+const descriptionElement = document.createElement("p");
+descriptionElement.innerText = ampoule.description ?? "Pas de description pour le moment.";
+
+const disponibiliteElement = document.createElement("p");
+disponibiliteElement.innerText = ampoule.disponibilite ? "En stock" : "Rupture de stock";
+
 // Récupération de l'élément du DOM qui accueillera les fiches
 const sectionFiches = document.querySelector(".fiches");
 
@@ -28,3 +34,5 @@ sectionFiches.appendChild(imageElement);
 sectionFiches.appendChild(nomElement);
 sectionFiches.appendChild(prixElement);
 sectionFiches.appendChild(categorieElement);
+sectionFiches.appendChild(descriptionElement);
+sectionFiches.appendChild(disponibiliteElement);
