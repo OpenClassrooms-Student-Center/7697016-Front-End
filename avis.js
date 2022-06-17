@@ -93,3 +93,48 @@ const graphiqueAvis = new Chart(
 	document.querySelector("#graphique-avis"),
 	config,
 );
+
+// Récupération des pièces depuis le localStorage
+const piecesJSON = window.localStorage.getItem("pieces");
+const pieces = JSON.parse(piecesJSON);
+
+// Calcul du nombre de commentaires
+let nbCommentairesDispo = 0;
+let nbCommentairesNonDispo = 0;
+
+for (let i = 0; i < avis.length; i++) {
+	const piece = pieces.find(p => p.id === avis[i].pieceId);
+
+	if (piece) {
+		if (piece.disponibilite) {
+			nbCommentairesDispo++;
+		} else {
+			nbCommentairesNonDispo++;
+		}
+	}
+}
+
+// Légende qui s'affichera sur la gauche à côté de la barre horizontale
+const labelsDispo = ["Disponibles", "Non dispo."];
+
+// Données et personnalisation du graphique
+const dataDispo = {
+	labels: labelsDispo,
+	datasets: [{
+		label: "Nombre de commentaires",
+		data: [nbCommentairesDispo, nbCommentairesNonDispo],
+		backgroundColor: "rgba(0, 230, 255, 1)", // turquoise
+	}],
+};
+
+// Objet de configuration final
+const configDispo = {
+	type: "bar",
+	data: dataDispo,
+};
+
+// Rendu du graphique dans l'élément canvas
+new Chart(
+	document.querySelector("#graphique-dispo"),
+	configDispo,
+);
