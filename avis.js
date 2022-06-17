@@ -37,6 +37,7 @@ formulaireAvis.addEventListener("submit", function (event) {
 	const avis = {
 		pieceId: event.target.querySelector("[name=piece-id]").value,
 		utilisateur: event.target.querySelector("[name=utilisateur").value,
+		nbEtoiles: event.target.querySelector("[name=nb-etoiles").value,
 		commentaire: event.target.querySelector("[name=commentaire]").value,
 	};
 
