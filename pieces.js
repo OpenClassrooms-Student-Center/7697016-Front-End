@@ -143,3 +143,15 @@ for (let i = 0; i < nomsDisponibles.length; i++) {
 }
 
 document.querySelector(".disponibles").appendChild(disponiblesElement);
+
+// Ajout du listener pour filter les pièces non abordables
+const inputPrixMax = document.querySelector("#prix-max");
+inputPrixMax.addEventListener("input", function () {
+	const piecesFiltrees = pieces.filter(function (piece) {
+		return piece.prix <= inputPrixMax.value;
+	});
+
+	// Effacement de l'écran et regénération de la page avec les pieces filtrées uniquement
+	document.querySelector(".fiches").innerHTML = "";
+	genererPieces(piecesFiltrees);
+});
