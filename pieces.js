@@ -1,3 +1,5 @@
+import { ajoutListenersAvis } from "./avis.js";
+
 // Récupération des pièces depuis le fichier JSON
 const reponse = await fetch("pieces-autos.json");
 const pieces = await reponse.json();
@@ -54,6 +56,9 @@ function genererPieces(pieces) {
 		// On rattache la balise article à la section fiches
 		sectionFiches.appendChild(pieceElement);
 	}
+
+	// Ajout des listeners sur les boutons des avis
+	ajoutListenersAvis();
 }
 
 // Premier affichage de la page
