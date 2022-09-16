@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "http-server",
+    "start": "http-server",
     "lint": "eslint *.js"
   },
   "author": "",
